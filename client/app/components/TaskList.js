@@ -13,25 +13,42 @@ const TaskList = () => {
   }, []);
 
   const fetchTasks = async () => {
-    const tasksData = await getTasks();
-    setTasks(tasksData);
+try {
+      const tasksData = await getTasks();
+      setTasks(tasksData);
+} catch (error) {
+  console.error("Error al listar todas las tareas:", error.message);
+}
   };
 
   const handleCreateTask = async () => {
-    const createdTask = await createTask({ title: newTaskTitle, description: newTaskDescription });
-    setTasks([...tasks, createdTask]);
-    setNewTaskTitle('');
-    setNewTaskDescription('');
+try {
+      const createdTask = await createTask({ title: newTaskTitle, description: newTaskDescription });
+      setTasks([...tasks, createdTask]);
+      setNewTaskTitle('');
+      setNewTaskDescription('');
+} catch (error) {
+  console.error("Error al crear la tarea:", error.message);
+}
   };
 
   const handleUpdateTask = async (taskId, isDone) => {
-    const updatedTaskData = await updateTask(taskId, { is_done: isDone });
-    setTasks(tasks.map((task) => (task.id === taskId ? updatedTaskData : task)));
+   try {
+     const updatedTaskData = await updateTask(taskId, { is_done: isDone });
+     setTasks(tasks.map((task) => (task.id === taskId ? updatedTaskData : task)));
+   } catch (error) {
+    console.error("Error al completar tarea:", error.message);
+   }
   };
 
   const handleDeleteTask = async (taskId) => {
-    await deleteTask(taskId);
-    setTasks(tasks.filter((task) => task.id !== taskId));
+try {
+      await deleteTask(taskId);
+      setTasks(tasks.filter((task) => task.id !== taskId));
+} catch (error) {
+  console.error("Error al borrar la tarea:", error.message);
+  
+}
   };
 
   const handleEditClick = (taskId) => {
