@@ -35,7 +35,7 @@ task_schema = TaskSchema()
 tasks_schema = TaskSchema(many=True)
 
 # Endpoint to create a new Task
-@app.route('/task', methods=["POST"])
+@app.route('/tasks', methods=["POST"])
 def add_task():
     task = request.get_json()
     title = task.get('title')
@@ -60,7 +60,7 @@ def get_tasks():
 
 
 # Endpoint for querying a single task
-@app.route("/task/<id>", methods=["GET"])
+@app.route("/tasks/<id>", methods=["GET"])
 def get_task(id):
     
     get_task = db.session.query(Task).filter(Task.id == id).first()
@@ -68,7 +68,7 @@ def get_task(id):
 
 
 # Endpoint for updating a task
-@app.route("/task/edit/<id>", methods=["PUT"])
+@app.route("/tasks/<id>", methods=["PUT"])
 def task_update(id):
     task = request.get_json()
     title = task.get('title')
@@ -80,7 +80,7 @@ def task_update(id):
     if title != None:
         task_update.title = title
     if description != None:
-        task_update.genre = description
+        task_update.description = description
     if is_done != None:
         task_update.is_done = is_done
 
@@ -90,7 +90,7 @@ def task_update(id):
 
 
 # Endpoint for deleting a task 
-@app.route("/task/<id>", methods=["DELETE"])
+@app.route("/tasks/<id>", methods=["DELETE"])
 def task_delete(id):
     task = db.session.query(Task).filter(Task.id == id).first()
     db.session.delete(task)
