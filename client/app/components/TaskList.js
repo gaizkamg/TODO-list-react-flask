@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getTasks, createTask, updateTask, deleteTask } from '../api/api';
+import { PlusIcon, CheckCircleIcon as CheckCircleOutlineIcon, TrashIcon, PencilSquareIcon, ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
+import { CheckCircleIcon as CheckCircleSolidIcon } from '@heroicons/react/24/solid'
+import styles from "../page.module.css";
+import Image from 'next/image';
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
@@ -55,6 +59,12 @@ try {
     setEditingTask(taskId);
   };
 
+  const handleKeyPress = (e) => {
+    if(e.keyCode === 'Enter'){
+      handleCreateTask;
+     }
+   }
+
   const handleSaveEdit = async (taskId, updatedTitle, updatedDescription) => {
     try {
       await updateTask(taskId, { title: updatedTitle, description: updatedDescription });
@@ -67,57 +77,74 @@ try {
 
   return (
     <>
-      <div>
-        <ul>
-          {tasks.map((task) => (
-            <li key={task.id}>
+    
+      <div
+      className="todo-form"
+      onSubmit={handleCreateTask}
+      >
+        <input
+          type="text"
+          className="todo-input input-title"
+          value={newTaskTitle}
+          onChange={(e) => setNewTaskTitle(e.target.value)}
+          placeholder="Nueva tarea"
+          required
+        />
+        <input
+          type="text"
+          className="todo-input input-description"
+          value={newTaskDescription}
+          onChange={(e) => setNewTaskDescription(e.target.value)}
+          placeholder="Descripcion"
+        />
+        <button  className="todo-btn" onClick={handleCreateTask}><PlusIcon /></button>
+    </div>
+
+
+        <ul className='todo-tasklist'>
+          {tasks.slice(0).reverse().map((task) => (
+            <li key={task.id} className='todo-card'>
               {editingTask === task.id ? (
                 <>
+                <div className="todo-header">
                   <input
                     type="text"
+                    className="todo-input-title"
                     value={task.title}
                     onChange={(e) => setTasks(tasks.map((t) => (t.id === task.id ? { ...t, title: e.target.value } : t)))}
-                  />
-                  <input
+                  /><button className="todo-icon-btn" onClick={() => handleSaveEdit(task.id, task.title, task.description)}><ArchiveBoxArrowDownIcon /></button>
+                  </div>
+                  <textarea
                     type="text"
+                    className="todo-input-edit"
                     value={task.description}
                     onChange={(e) => setTasks(tasks.map((t) => (t.id === task.id ? { ...t, description: e.target.value } : t)))}
                   />
-                  <button onClick={() => handleSaveEdit(task.id, task.title, task.description)}>Guardar</button>
+                  
                 </>
               ) : (
                 <>
-                  <span style={{ textDecoration: task.is_done ? 'line-through' : 'none' }}>
-                    {task.title} 
-                  </span>
-                  <div> {task.description} </div>
-                  <button onClick={() => handleUpdateTask(task.id, !task.is_done)}>
-                    {task.is_done ? 'Marcar Incompleta' : 'Marcar Completa'}
-                  </button>
-                  <button onClick={() => handleDeleteTask(task.id)}>Eliminar</button>
-                  <button onClick={() => handleEditClick(task.id)}>Editar</button>
+                  <div className="todo-header">
+                    <button  className='todo-icon-btn' onClick={() => handleUpdateTask(task.id, !task.is_done)}>
+                        {task.is_done ? <CheckCircleSolidIcon className='todo-icon'/> : <CheckCircleOutlineIcon className='todo-icon'/>}
+                      </button>
+                      <p className={task.is_done ? 'todo-isdone todo-title' : 'todo-isNot todo-title' }>
+                        {task.title}
+                      </p>
+                      <button className='todo-icon-btn' onClick={() => handleEditClick(task.id)}><PencilSquareIcon className='todo-icon'/></button>
+                      <button className='todo-icon-btn color-warning' onClick={() => handleDeleteTask(task.id)}><TrashIcon className='todo-icon'/></button>
+                  </div>
+                  <div className={ task.is_done ? 'todo-isdone todo-tasklist-description' : 'todo-isNot todo-tasklist-description' }> {task.description} </div>
+                 
+             
                 </>
               )}
             </li>
           ))}
         </ul>
-      </div>
 
-      <div>
-        <input
-          type="text"
-          value={newTaskTitle}
-          onChange={(e) => setNewTaskTitle(e.target.value)}
-          placeholder="Nueva tarea"
-        />
-        <input
-          type="text"
-          value={newTaskDescription}
-          onChange={(e) => setNewTaskDescription(e.target.value)}
-          placeholder="Descripcion"
-        />
-        <button onClick={handleCreateTask}>Crear Tarea</button>
-      </div>
+
+      
     </>
   );
 };

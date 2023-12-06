@@ -1,0 +1,52 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 0.625em;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+body {
+    /* Modificar */
+    font-size: 1.6rem;
+    font-family: $nunito;
+    color: $foreground-rgb;
+    background: $lightblue;
+    background: url("/assets/get-things-done-illustration-removebg.png")  no-repeat,  linear-gradient(0deg, rgba(47,168,255,1) 0%, rgba(202,249,255,1) 80%) ;
+    background-size: 100%;
+}
+
+iframe {
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+  
+button {
+    cursor: pointer;
+}
+
+input {
+    border: none;
+    margin: 0;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
+  }

@@ -1,0 +1,153 @@
+.todo-heading{
+  font-family: $teko;
+  font-size: 10rem;
+  color: $charcoal;
+  text-shadow: -3px 0 $blue, 0 3px $blue, 3px 0 $blue, 0 -3px $blue
+}
+
+.todo-form {
+  display: flex;
+  gap: 0.5em;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 1.4rem;
+  background: transparent;
+  margin: 1.5rem 0 2rem;
+}
+
+.todo-input {
+  font-family: $oswald;
+  font-size: 1.8rem;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.input-description {
+  font-size: 1.8rem;
+  width: 40rem;
+}
+
+.todo-btn {
+  max-width: fit-content;
+  min-width: 4rem;
+  margin-left: auto;
+  display: flex;
+  place-items: center;
+  gap: 0.5em;
+  padding: 0.5em;
+  background-color: $blue;
+  color: $offwhite;
+  text-decoration: none;
+  border: none;
+  border-radius: 0.5rem;
+  //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+
+    &:hover{
+      background-color: $lightblue;
+      color: $charcoal;
+    }
+}
+
+button.todo-icon-btn{
+  border: 1px solid;
+  border-radius: 100%;
+  color: $blue;
+  background-color: $offwhite;
+  width: fit-content;
+  min-width: 2.4rem;
+  height: 2.4rem;
+
+  &:hover{
+    color: $offwhite;
+    background-color: $accent;
+  }
+}
+
+button.color-warning{
+  color: $blue;
+
+    &:hover{
+      color: $warning;
+      border: 1px solid $warning;
+      background-color: $offwhite;
+    }
+}
+
+.todo-icon{
+  cursor: pointer;
+  border-radius: 100%;
+  width: fit-content;
+  min-width: 2.4rem;
+  padding: 10%;
+}
+
+textarea.todo-input-edit {
+  font-family: $nunito;
+  font-size: 1.2rem;
+  width: 100%;
+  border-radius: 1.4rem;
+  margin: 0.5rem 2.8rem;
+  padding: 1rem;
+  background-color: $blue;
+  color: $offwhite;
+  border: none;
+}
+
+input.todo-input-title{
+  font-family: $oswald;
+  font-size: 1.8rem;
+  margin: 1rem auto 0 2.8rem;
+  background-color: $blue;
+  color: $offwhite;
+  border-radius: 1.2rem;
+  padding-left: 1rem;
+}
+
+.todo-tasklist {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: masonry;
+  gap: 2rem;
+}
+
+.todo-card {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  margin: 1.5rem;
+  padding: 1.3rem;
+  border-radius: 3rem;
+  background-color: $offwhite;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.todo-header{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start; 
+}
+
+.todo-title{
+  font-family: $oswald;
+  font-size: 1.8rem;
+  line-height: 2rem;
+  text-align: start;
+  margin: 1rem auto .8rem 1rem;
+}
+
+.todo-tasklist-description {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: .5rem 4rem 2rem;
+  text-align: justify;
+}
+
+.todo-isdone {
+  text-decoration: line-through;
+}
+
+.todo-isNot {
+  text-decoration: none;
+}
