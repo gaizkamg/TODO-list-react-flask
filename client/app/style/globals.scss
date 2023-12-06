@@ -17,8 +17,8 @@ body {
     font-family: $nunito;
     color: $foreground-rgb;
     background: $lightblue;
-    background: url("/assets/get-things-done-illustration-removebg.png")  no-repeat,  linear-gradient(0deg, rgba(47,168,255,1) 0%, rgba(202,249,255,1) 80%) ;
-    background-size: 100%;
+    background: url("/assets/get-things-done-illustration-removebg.png") 50% 120% no-repeat,  linear-gradient(0deg, rgba(47,168,255,1) 0%, rgba(202,249,255,1) 80%) ;
+    background-size: contain;
 }
 
 iframe {

@@ -13,6 +13,7 @@
   border-radius: 1.4rem;
   background: transparent;
   margin: 1.5rem 0 2rem;
+  min-width: 750px;
 }
 
 .todo-input {
@@ -24,7 +25,7 @@
 
 .input-description {
   font-size: 1.8rem;
-  width: 40rem;
+  width: 100%;
 }
 
 .todo-btn {
@@ -85,7 +86,7 @@ button.color-warning{
 textarea.todo-input-edit {
   font-family: $nunito;
   font-size: 1.2rem;
-  width: 100%;
+  width: 90%;
   border-radius: 1.4rem;
   margin: 0.5rem 2.8rem;
   padding: 1rem;
@@ -109,13 +110,15 @@ input.todo-input-title{
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: masonry;
   gap: 2rem;
+  max-width: 750px;
+
 }
 
 .todo-card {
   display: flex;
   flex-flow: column;
   width: 100%;
-  margin: 1.5rem;
+  margin: 0;
   padding: 1.3rem;
   border-radius: 3rem;
   background-color: $offwhite;
