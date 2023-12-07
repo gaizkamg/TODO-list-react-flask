@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import TaskList from './components/taskList';
+import TaskList from '/app/components/taskList';
 
 
 export default function Home() {
