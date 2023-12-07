@@ -35,7 +35,7 @@ task_schema = TaskSchema()
 tasks_schema = TaskSchema(many=True)
 
 # Endpoint to create a new Task
-@app.route('/tasks', methods=["POST"])
+@app.route('/api/tasks', methods=["POST"])
 def add_task():
     task = request.get_json()
     title = task.get('title')
@@ -52,7 +52,7 @@ def add_task():
 
 
 # Endpoint to query all tasks
-@app.route("/tasks", methods=["GET"])
+@app.route("/api/tasks", methods=["GET"])
 def get_tasks():
     all_tasks =  db.session.query(Task).all()
     result = tasks_schema.dump(all_tasks)
@@ -60,7 +60,7 @@ def get_tasks():
 
 
 # Endpoint for querying a single task
-@app.route("/tasks/<id>", methods=["GET"])
+@app.route("/api/tasks/<id>", methods=["GET"])
 def get_task(id):
     
     get_task = db.session.query(Task).filter(Task.id == id).first()
@@ -68,7 +68,7 @@ def get_task(id):
 
 
 # Endpoint for updating a task
-@app.route("/tasks/<id>", methods=["PUT"])
+@app.route("/api/tasks/<id>", methods=["PUT"])
 def task_update(id):
     task = request.get_json()
     title = task.get('title')
@@ -90,13 +90,19 @@ def task_update(id):
 
 
 # Endpoint for deleting a task 
-@app.route("/tasks/<id>", methods=["DELETE"])
+@app.route("/api/tasks/<id>", methods=["DELETE"])
 def task_delete(id):
     task = db.session.query(Task).filter(Task.id == id).first()
     db.session.delete(task)
     db.session.commit()
 
     return jsonify("The following task has been deleted!", task_schema.dump(task))
+
+
+# Health Checker
+@app.route("/api/healthchecker", methods=["GET"])
+def healthchecker():
+    return {"status": "success", "message": "Integrate Flask Framework with Next.js"}
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)

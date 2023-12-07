@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { getTasks, createTask, updateTask, deleteTask } from '../api/api';
+import { getTasks, createTask, updateTask, deleteTask } from '../apimethods/apimethods';
 import { PlusIcon, CheckCircleIcon as CheckCircleOutlineIcon, TrashIcon, PencilSquareIcon, ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
 import { CheckCircleIcon as CheckCircleSolidIcon } from '@heroicons/react/24/solid'
-import styles from "../page.module.css";
-import Image from 'next/image';
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
