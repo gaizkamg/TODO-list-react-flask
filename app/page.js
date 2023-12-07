@@ -7,10 +7,7 @@ export default function Home() {
   
 
   return (
-    <main className='main'>
-      
-      <h1 className='todo-heading'>Get Things Done</h1>
-      
+    <main className='main'>      
       <TaskList />
     </main>
   );

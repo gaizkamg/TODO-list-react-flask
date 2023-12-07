@@ -17,7 +17,7 @@ body {
     font-family: $nunito;
     color: $foreground-rgb;
     background: $lightblue;
-    background: url("/assets/get-things-done-illustration-removebg.png") 50% 120% no-repeat,  linear-gradient(0deg, rgba(47,168,255,1) 0%, rgba(202,249,255,1) 80%) ;
+    background: url("/assets/get-things-done-illustration-removebg.png") 50% 20% no-repeat,  linear-gradient(0deg, rgba(47,168,255,1) 0%, rgba(202,249,255,1) 80%) ;
     background-size: contain;
 }
 
@@ -47,6 +47,5 @@ input {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 6rem;
     min-height: 100vh;
   }
