@@ -85,7 +85,7 @@ try {
           className="todo-input input-title"
           value={newTaskTitle}
           onChange={(e) => setNewTaskTitle(e.target.value)}
-          placeholder="Nueva tarea"
+          placeholder="New task"
           required
         />
         <input
@@ -93,7 +93,7 @@ try {
           className="todo-input input-description"
           value={newTaskDescription}
           onChange={(e) => setNewTaskDescription(e.target.value)}
-          placeholder="Descripcion"
+          placeholder="Description"
         />
         <button  className="todo-btn" onClick={handleCreateTask}><PlusIcon /></button>
     </div>
@@ -110,14 +110,15 @@ try {
                     className="todo-input-title"
                     value={task.title}
                     onChange={(e) => setTasks(tasks.map((t) => (t.id === task.id ? { ...t, title: e.target.value } : t)))}
-                  /><button className="todo-icon-btn" onClick={() => handleSaveEdit(task.id, task.title, task.description)}><ArchiveBoxArrowDownIcon /></button>
+                  />
                   </div>
                   <textarea
                     type="text"
                     className="todo-input-edit"
                     value={task.description}
                     onChange={(e) => setTasks(tasks.map((t) => (t.id === task.id ? { ...t, description: e.target.value } : t)))}
-                  />
+                    />
+                  <button className="todo-icon-btn icon-margin-left" onClick={() => handleSaveEdit(task.id, task.title, task.description)}><ArchiveBoxArrowDownIcon /></button>
                   
                 </>
               ) : (

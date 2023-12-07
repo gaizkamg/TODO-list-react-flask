@@ -20,17 +20,19 @@
 
 .todo-input {
   font-family: $oswald;
-  font-size: 1.8rem;
   border-radius: 1rem;
   padding: 1rem;
 }
 
 .input-description {
   font-size: 1.8rem;
+  flex: 2 1 0;
   
 }
 .input-title{
-
+  flex: 1 4 auto; 
+  font-size: 1.8rem;
+  flex-grow: 1;
 }
 
 
@@ -71,6 +73,10 @@ button.todo-icon-btn{
   }
 }
 
+.icon-margin-left{
+  margin-left: auto;
+}
+
 button.color-warning{
   color: $blue;
 
@@ -91,33 +97,47 @@ button.color-warning{
 
 textarea.todo-input-edit {
   font-family: $nunito;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   width: 90%;
   border-radius: 1.4rem;
-  margin: 0.5rem 2.8rem;
+  margin: 0.5rem 1rem;
   padding: 1rem;
-  background-color: $blue;
-  color: $offwhite;
+  background-color: $semi-blue;
+  color: $charcoal;
   border: none;
 }
 
-
+input.todo-input-title{
+  font-family: $oswald;
+  font-size: 1.8rem;
+  width: 90%;
+  border-radius: 1.4rem;
+  margin: 0.5rem 1rem;
+  padding: .6rem;
+  background-color: $semi-blue;
+  color: $charcoal;
+  border: none;
+}
 
 .todo-tasklist {
   display: flex;
   flex-wrap: wrap;
-  width: 60%;
+  width: 70%;
   gap: 2rem;
-  max-width: 550px;
-  align-content: flex-start;
- 
+  max-width: 735px;
+  align-content: start;
+  height: 80vh;
+  justify-content: center;
 
 }
 
 .todo-card {
+  
+  flex-shrink: 2;
+  flex-basis: auto;
+
   display: flex;
   flex-flow: column;
-  width: 100%;
   height: fit-content;
   margin: 0;
   padding: 1.3rem;
@@ -143,6 +163,7 @@ textarea.todo-input-edit {
 
 .todo-tasklist-description {
   width: 100%;
+  max-width: 30rem;
   font-size: 1.2rem;
   padding: .5rem 4rem 2rem;
   text-align: justify;
