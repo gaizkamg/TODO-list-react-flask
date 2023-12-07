@@ -7,9 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    
-    "dev": "concurrently \"pipenv run next dev\" \"pipenv run flask --app api/index run -p 8000 --reload\"",
-    "flask-dev": "FLASK_DEBUG=1 pip3 install -r requirements.txt && python3 -m flask --app api/index run -p 8000 --reload",
+    "dev": "next dev",
     "next-dev": "next dev"
 
 
