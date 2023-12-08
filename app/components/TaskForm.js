@@ -1,4 +1,6 @@
-import { PlusIcon } from '@heroicons/react/24/outline'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; 
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 
 
 const TaskForm = ({ newTaskTitle, newTaskDescription, setNewTaskTitle, setNewTaskDescription, handleCreateTask }) => {
@@ -31,7 +33,9 @@ const TaskForm = ({ newTaskTitle, newTaskDescription, setNewTaskTitle, setNewTas
             placeholder="Description"
             onKeyDown={handleKeyPress}
           />
-          <button className="todo-btn" onClick={handleCreateTask}><PlusIcon className='todo-btn-plus'/></button>
+          <button className="todo-plus-btn" onClick={handleCreateTask}>
+            <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
+            </button>
         </div>
       </>
     );

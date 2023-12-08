@@ -28,20 +28,15 @@
     flex-grow: 1;
   }
   
-  .todo-btn {
-    max-width: fit-content;
-    min-width: 4rem;
+  .todo-plus-btn {
     margin-left: auto;
-    display: flex;
-    place-items: center;
-    gap: 0.5em;
-    padding: 0.5em;
+    font-size: 2.5rem;
+    padding: 1rem;
     background-color: $blue;
     color: $offwhite;
     text-decoration: none;
     border: none;
     border-radius: 0.5rem;
-    text-align: center;
   
       &:hover{
         background-color: $transparent-blue;

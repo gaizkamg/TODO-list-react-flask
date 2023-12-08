@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { getTasks, createTask, updateTask, deleteTask } from '../apimethods/apimethods';
-import { CheckCircleIcon as CheckCircleOutlineIcon, TrashIcon, PencilSquareIcon, ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
-import { CheckCircleIcon as CheckCircleSolidIcon } from '@heroicons/react/24/solid'
+import { getTasks, updateTask, deleteTask } from '../apimethods/apimethods';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import the FontAwesomeIcon component
+import { faPenToSquare, faCircleCheck, faTrashCan, faFloppyDisk } from "@fortawesome/free-regular-svg-icons";
+
+
 
 const TaskList = ({ tasks, setTasks }) => {
   const [editingTask, setEditingTask] = useState(null);
@@ -59,6 +61,7 @@ try {
   return (
     <>
       <ul className={`todo-tasklist`}>
+      
           {tasks.slice(0).reverse().map((task) => (
             <li key={task.id} className='todo-card'>
               {editingTask === task.id ? (
@@ -77,20 +80,21 @@ try {
                     value={task.description}
                     onChange={(e) => setTasks(tasks.map((t) => (t.id === task.id ? { ...t, description: e.target.value } : t)))}
                     />
-                  <button className="todo-icon-btn icon-margin-left" onClick={() => handleSaveEdit(task.id, task.title, task.description)}><ArchiveBoxArrowDownIcon className='todo-icon'/></button>
+                  <button className="todo-icon-btn icon-margin-left" onClick={() => handleSaveEdit(task.id, task.title, task.description)}><FontAwesomeIcon className='todo-icon' icon={faFloppyDisk} /></button>
                   
                 </>
               ) : (
                 <>
                   <div className="todo-header">
                     <button  className='todo-icon-btn checked' onClick={() => handleUpdateTask(task.id, !task.is_done)}>
-                        {task.is_done ? <CheckCircleSolidIcon className='todo-icon'/> : <CheckCircleOutlineIcon className='todo-icon'/>}
+                        {task.is_done ?       <FontAwesomeIcon className='todo-icon' icon={faCircleCheck} />
+ : <FontAwesomeIcon className='todo-icon' icon={faCircleCheck} />}
                       </button>
                       <p className={task.is_done ? 'todo-isdone todo-title' : 'todo-isNot todo-title' }>
                         {task.title}
                       </p>
-                      <button className='todo-icon-btn' onClick={() => handleEditClick(task.id)}><PencilSquareIcon className='todo-icon'/></button>
-                      <button className='todo-icon-btn color-warning' onClick={() => handleDeleteTask(task.id)}><TrashIcon className='todo-icon'/></button>
+                      <button className='todo-icon-btn' onClick={() => handleEditClick(task.id)}><FontAwesomeIcon className='todo-icon' icon={faPenToSquare} /></button>
+                      <button className='todo-icon-btn color-warning' onClick={() => handleDeleteTask(task.id)}><FontAwesomeIcon className='todo-icon' icon={faTrashCan} /></button>
                   </div>
                   <div className={ task.is_done ? 'todo-isdone todo-tasklist-description' : 'todo-isNot todo-tasklist-description' }> {task.description} </div>
                  
