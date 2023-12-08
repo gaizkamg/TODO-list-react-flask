@@ -25,10 +25,10 @@
   .input-title{
     flex: 1 4 auto; 
     font-size: 1.8rem;
-    flex-grow: 1;
   }
   
   .todo-plus-btn {
+    flex: 1 1 auto;
     margin-left: auto;
     font-size: 2.5rem;
     padding: 1rem;
@@ -50,8 +50,10 @@
     height: 5rem;
     min-width: 100%;
 }
-.todo-btn-plus{
+.todo-plus-btn{
   width: 4rem;
   margin: auto;
 }
-  }
+
+
+ }
