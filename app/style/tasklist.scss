@@ -117,16 +117,16 @@
 
 
   
-  @media only screen and (min-width: 611px) and (max-width: 800px){
+  @media only screen and (min-width: 511px) and (max-width: 700px){
     .todo-card {
-      width: 40%;
+      width: 80%;
     }
     .todo-tasklist{
      width: 90%;
     }
   }
 
-  @media only screen and (min-width: 240px) and (max-width: 610px) {
+  @media only screen and (min-width: 240px) and (max-width: 510px) {
     .todo-card {
         width: 100%;
         min-width: 27rem;
@@ -149,7 +149,6 @@
     .todo-icon{
         width: fit-content;
         min-width: 3.4rem;
-        padding: .4rem;
         border-radius: 0;
     }
 
