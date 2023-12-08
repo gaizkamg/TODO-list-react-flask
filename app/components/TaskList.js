@@ -58,7 +58,7 @@ try {
 
   return (
     <>
-      <ul className='todo-tasklist'>
+      <ul className={`todo-tasklist`}>
           {tasks.slice(0).reverse().map((task) => (
             <li key={task.id} className='todo-card'>
               {editingTask === task.id ? (
@@ -66,7 +66,7 @@ try {
                 <div className="todo-header">
                   <input
                     type="text"
-                    className="todo-input-title"
+                    className= "todo-input-title"
                     value={task.title}
                     onChange={(e) => setTasks(tasks.map((t) => (t.id === task.id ? { ...t, title: e.target.value } : t)))}
                   />

@@ -60,6 +60,7 @@
     border-radius: 100%;
     color: $blue;
     background-color: $offwhite;
+    height: 3.2rem;
 
     &:hover{
       color: $offwhite;
@@ -128,15 +129,15 @@
     }
   }
 
-  @media only screen and (min-width: 0px) and (max-width: 610px) {
+  @media only screen and (min-width: 240px) and (max-width: 610px) {
     .todo-card {
         width: 100%;
         min-width: 27rem;
-
     }
 
     .todo-tasklist {
         width: 70%;
+        min-width: 31rem;
     }
 
     .todo-title {
