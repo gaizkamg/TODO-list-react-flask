@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getTasks, createTask, updateTask, deleteTask } from '../apimethods/apimethods';
-import { CheckCircleIcon as CheckCircleOutlineIcon, TrashIcon, PencilSquareIcon, ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
+import { PlusIcon, CheckCircleIcon as CheckCircleOutlineIcon, TrashIcon, PencilSquareIcon, ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
 import { CheckCircleIcon as CheckCircleSolidIcon } from '@heroicons/react/24/solid'
 
-const TaskList = ({ tasks, setTasks }) => {
+const TaskList = () => {
+  const [tasks, setTasks] = useState([]);
+  const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [newTaskDescription, setNewTaskDescription] = useState('');
   const [editingTask, setEditingTask] = useState(null);
+
+  useEffect(() => {
+    // Load tasks mounting component
+    fetchTasks();
+   
+  }, []);
 
   // Method GET all tasks
   const fetchTasks = async () => {
@@ -16,7 +25,19 @@ try {
 }
   };
 
+  // Method for CREATE
+  const handleCreateTask = async () => {
+try {
+      const createdTask = await createTask({ title: newTaskTitle, description: newTaskDescription });
+      setTasks([...tasks, createdTask]);
+      setNewTaskTitle('');
+      setNewTaskDescription('');
+} catch (error) {
+  console.error("Error creating task:", error.message);
+}
+  };
 
+  
   // Method for UPDATE COMPLETION 
   const handleUpdateTask = async (taskId, isDone) => {
    try {
@@ -58,7 +79,30 @@ try {
 
   return (
     <>
-      <ul className='todo-tasklist'>
+      <div
+      className="todo-form"
+      onSubmit={handleCreateTask}
+      >
+        <input
+          type="text"
+          className="todo-input input-title"
+          value={newTaskTitle}
+          onChange={(e) => setNewTaskTitle(e.target.value)}
+          placeholder="New task"
+          required
+        />
+        <input
+          type="text"
+          className="todo-input input-description"
+          value={newTaskDescription}
+          onChange={(e) => setNewTaskDescription(e.target.value)}
+          placeholder="Description"
+        />
+        <button  className="todo-btn" onClick={handleCreateTask}><PlusIcon /></button>
+    </div>
+
+
+        <ul className='todo-tasklist'>
           {tasks.slice(0).reverse().map((task) => (
             <li key={task.id} className='todo-card'>
               {editingTask === task.id ? (
@@ -77,13 +121,13 @@ try {
                     value={task.description}
                     onChange={(e) => setTasks(tasks.map((t) => (t.id === task.id ? { ...t, description: e.target.value } : t)))}
                     />
-                  <button className="todo-icon-btn icon-margin-left" onClick={() => handleSaveEdit(task.id, task.title, task.description)}><ArchiveBoxArrowDownIcon className='todo-icon'/></button>
+                  <button className="todo-icon-btn icon-margin-left" onClick={() => handleSaveEdit(task.id, task.title, task.description)}><ArchiveBoxArrowDownIcon /></button>
                   
                 </>
               ) : (
                 <>
                   <div className="todo-header">
-                    <button  className='todo-icon-btn checked' onClick={() => handleUpdateTask(task.id, !task.is_done)}>
+                    <button  className='todo-icon-btn' onClick={() => handleUpdateTask(task.id, !task.is_done)}>
                         {task.is_done ? <CheckCircleSolidIcon className='todo-icon'/> : <CheckCircleOutlineIcon className='todo-icon'/>}
                       </button>
                       <p className={task.is_done ? 'todo-isdone todo-title' : 'todo-isNot todo-title' }>

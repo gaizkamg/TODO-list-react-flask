@@ -1,0 +1,171 @@
+  .todo-tasklist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-content: start;
+    justify-content: center;
+  }
+  
+  .todo-card {
+    display: flex;
+    flex-flow: column;
+    height: fit-content;
+    overflow: hidden;
+    margin: 0;
+    min-width: 24rem;
+    padding: 1.3rem;
+    border-radius: 3rem;
+    background-color: $offwhite;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+
+  
+ //styles inside the card 
+  .todo-header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-width: 20rem; 
+  }
+  
+  .todo-title{
+    font-family: $oswald;
+    font-size: 2.1rem;
+    line-height: 2rem;
+    text-align: start;
+    margin: 1rem auto .8rem 1rem;
+    flex-shrink: 2;
+  }
+  
+  .todo-tasklist-description {
+    width: 100%;
+    max-width: 30rem;
+    font-size: 1.4rem;
+    padding: .5rem 4rem 2rem;
+    text-align: start;
+  }
+  
+  .todo-isdone {
+    text-decoration: line-through;
+  }
+  
+  .todo-isNot {
+    text-decoration: none;
+  }
+
+  button.todo-icon-btn{
+    border: 1px solid;
+    border-radius: 100%;
+    color: $blue;
+    background-color: $offwhite;
+
+    &:hover{
+      color: $offwhite;
+      background-color: $accent;
+    }
+  }
+  
+  .icon-margin-left{
+    margin-left: auto;
+  }
+  
+  button.color-warning{
+    color: $blue;
+  
+      &:hover{
+        color: $warning;
+        border: 1px solid $warning;
+        background-color: $offwhite;
+      }
+  }
+  
+  .todo-icon{
+    cursor: pointer;
+    width: fit-content;
+    min-width: 3rem;
+    
+  }
+  
+  textarea.todo-input-edit {
+    font-family: $nunito;
+    font-size: 1.3rem;
+    width: 90%;
+    border-radius: 1.4rem;
+    margin: 0.5rem 1rem;
+    padding: 1rem;
+    background-color: $transparent-blue;
+    color: $charcoal;
+    border: none;
+  }
+  
+  input.todo-input-title{
+    font-family: $oswald;
+    font-size: 1.8rem;
+    width: 90%;
+    border-radius: 1.4rem;
+    margin: 0.5rem 1rem;
+    padding: .6rem;
+    background-color: $transparent-blue;
+    color: $charcoal;
+    border: none;
+  }
+  
+
+  @media only screen and (min-width: 801px)  {
+    .todo-card {
+      width: 25%;
+    }
+  }
+  
+  @media only screen and (min-width: 611px) and (max-width: 800px){
+    .todo-card {
+      width: 40%;
+    }
+    .todo-tasklist{
+     width: 90%;
+    }
+  }
+
+  @media only screen and (min-width: 0px) and (max-width: 610px) {
+    .todo-card {
+        width: 100%;
+        min-width: 27rem;
+
+    }
+
+    .todo-tasklist {
+        width: 70%;
+    }
+
+    .todo-title {
+        order:0;
+        font-size: 2.5rem;
+    }
+
+    .todo-tasklist-description{
+        font-size: 1.5rem;
+    }
+
+    .todo-icon{
+        width: fit-content;
+        min-width: 3.4rem;
+        padding: .4rem;
+        border-radius: 0;
+    }
+
+
+
+    button.todo-icon-btn{
+        border-radius: 2rem;
+        margin: .2rem;
+        font-size: .3rem;
+
+      }
+   .input-title{
+        font-size: none;
+      }
+
+  }
+  

@@ -6,6 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'TODO application',
   description: 'Get Things Done',
+  viewport: 'width=device-width, initial-scale=1'
 }
 
 export default function RootLayout({ children }) {
