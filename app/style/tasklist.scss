@@ -12,7 +12,8 @@
     height: fit-content;
     overflow: hidden;
     margin: 0;
-    min-width: 24rem;
+    width: 25%;
+    min-width: 31rem;
     padding: 1.3rem;
     border-radius: 3rem;
     background-color: $offwhite;
@@ -114,11 +115,7 @@
   }
   
 
-  @media only screen and (min-width: 801px)  {
-    .todo-card {
-      width: 25%;
-    }
-  }
+
   
   @media only screen and (min-width: 611px) and (max-width: 800px){
     .todo-card {
