@@ -22,7 +22,6 @@ const TaskForm = ({ newTaskTitle, newTaskDescription, setNewTaskTitle, setNewTas
             value={newTaskTitle}
             onChange={(e) => setNewTaskTitle(e.target.value)}
             placeholder="New task"
-            required
             onKeyDown={handleKeyPress}
           />
           <input

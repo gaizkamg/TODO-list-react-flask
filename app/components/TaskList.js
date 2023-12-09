@@ -8,18 +8,7 @@ import { faPenToSquare, faCircleCheck, faTrashCan, faFloppyDisk } from "@fortawe
 const TaskList = ({ tasks, setTasks }) => {
   const [editingTask, setEditingTask] = useState(null);
 
-  // Method GET all tasks
-  const fetchTasks = async () => {
-try {
-      const tasksData = await getTasks();
-      setTasks(tasksData);
-} catch (error) {
-  console.error("Error listing tasks:", error.message);
-}
-  };
-
-
-  // Method for UPDATE COMPLETION 
+   // Method for UPDATE COMPLETION 
   const handleUpdateTask = async (taskId, isDone) => {
    try {
      const updatedTaskData = await updateTask(taskId, { is_done: isDone });
